@@ -2,29 +2,36 @@
 
 ## 命名规范
 1.目录命名(小写,复数,连接符)
+```
   项目命名:            project-name
   样式文件夹:          styles
   图片文件夹:          images
   第三方库文件夹:       libs
   其他资源:            assets
   多个单词的目录名使用横杠字符连接: 如 project-name
+```
 
 2.文件命名(小驼峰)
-  	index.js, 
-	commen.css, 
-  	myTool.js
+```
+  index.js, 
+  commen.css, 
+  myTool.js
+```
 
 3.图片资源命名(英文小写,有意义,下划线连接)
-  	'icon.png'
-  	'home_logo.png'
+```
+  icon.png
+  home_logo.png
+```
 
 4.vue 组件命名(小写,连接符,尽量使用多个单词,避免与标签重名,存在层级关系加上父级前缀)
-  	news.vue
-  	news-list.vue
-  	news-list-item.vue
-  	导入: import NewsListItem from 'components/news-list-item.vue'
-  	使用: <news-list-item></news-list-item>
-
+```
+  news.vue
+  news-list.vue
+  news-list-item.vue
+  导入: import NewsListItem from 'components/news-list-item.vue'
+  使用: <news-list-item></news-list-item>
+```
 ## 代码规范
   - eslint工具: 对 javascript 代码进行检查, vue项目中添加相关配置  
     配置项参考: https://cn.eslint.org/docs/rules/
@@ -307,4 +314,5 @@
   配置项选择: Babel, Router, Vuex, CSS-Pre-processors, Linter, Unit Testing
 
 2.目录结构创建,见项目
+
 ![](https://github.com/appleguardu/team-startand-build/blob/master/src/assets/images/startand.png)
