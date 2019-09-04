@@ -28,6 +28,7 @@
 ## 代码规范
   - eslint工具: 对 javascript 代码进行检查, vue 项目中添加相关配置
     配置项参考: https://cn.eslint.org/docs/rules/
+    
   - stylelint 工具: 对 css.scss,less 等进行规范检查, vue 项目中配置
     配置项参考: https://www.npmjs.com/package/stylelint-config-standard
 
@@ -291,3 +292,4 @@
 
 2.目录结构创建
   见项目
+![](https://github.com/appleguardu/team-startand-build/blob/master/src/assets/images/startand.png)
