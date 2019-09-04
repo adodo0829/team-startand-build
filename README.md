@@ -10,26 +10,26 @@
   多个单词的目录名使用横杠字符连接: 如 project-name
 
 2.文件命名(小驼峰)
-  index.js, 
-  commen.css, 
-  myTool.js
+  	index.js, 
+	commen.css, 
+  	myTool.js
 
 3.图片资源命名(英文小写,有意义,下划线连接)
-  icon.png
-  home_logo.png
+  	'icon.png'
+  	'home_logo.png'
 
 4.vue 组件命名(小写,连接符,尽量使用多个单词,避免与标签重名,存在层级关系加上父级前缀)
-  news.vue
-  news-list.vue
-  news-list-item.vue
-  导入: import NewsListItem from 'components/news-list-item.vue'
-  使用: <news-list-item></news-list-item>
+  	news.vue
+  	news-list.vue
+  	news-list-item.vue
+  	导入: import NewsListItem from 'components/news-list-item.vue'
+  	使用: <news-list-item></news-list-item>
 
 ## 代码规范
-  - eslint工具: 对 javascript 代码进行检查, vue项目中添加相关配置
+  - eslint工具: 对 javascript 代码进行检查, vue项目中添加相关配置  
     配置项参考: https://cn.eslint.org/docs/rules/
     
-  - stylelint 工具: 对 css.scss,less 等进行规范检查, vue项目中配置
+  - stylelint 工具: 对 css.scss,less 等进行规范检查, vue项目中配置  
     配置项参考: https://www.npmjs.com/package/stylelint-config-standard
 
 ### HTML书写规范
@@ -138,10 +138,13 @@
       } 
 
   - 变量命名: 使用有含义的变量名,统一采用驼峰命名,常量使用全大写+下划线
+  ```
     let homeTitle = '主页'
     const SECONDS_IN_ONE_DAY = 24 * 60 * 60
+  ```
   
   - 对象简写,推荐字面量写法
+  ```
     const name = 'leo'
     const age = 26
     function work() {...}
@@ -151,15 +154,18 @@
       age,
       work
     }
-
+  ```
+  
   - 在需要使用对象的多个属性时，使用解构赋值
+  ```
     const obj = {
       foo: 'foo',
       bar: 'bar',
       baz: 'baz'
     }
     const { foo, bar, baz } = obj
-
+  ```
+  
   - 文件注释 用于告诉不熟悉这段代码的读者这个文件中包含哪些东西, 提供文件的大体内容, 它的作者, 依赖关系和兼容性信息
   示例: 如 filter.js 文件
     /**
@@ -301,5 +307,4 @@
   配置项选择: Babel, Router, Vuex, CSS-Pre-processors, Linter, Unit Testing
 
 2.目录结构创建,见项目
-  
- ![](https://github.com/appleguardu/team-startand-build/blob/master/src/assets/images/startand.png)
+![](https://github.com/appleguardu/team-startand-build/blob/master/src/assets/images/startand.png)
