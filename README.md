@@ -302,12 +302,17 @@
             type: String,
             default: 'huahua',
             required: false
-          }
+          },
+	  // 年龄
+	  age: {
+	    type: Number,
+	    default: 18
+	  }
       },
      ``` 
   
 ## git 使用规范
-  
+  ```
   - master:正式环境分支;  dev: 测试环境分支; 自建个人分支: 自己的名字_dev;
   - 多人合作: 注意提交之前先拉取其他人更新的代码再合并提交!
   - commit message规范(可以强制做提交预检)
@@ -317,11 +322,11 @@
     refactor：'重构（即不是新增功能，也不是修改bug的代码变动,  推翻重写'
     test：'增加测试'
     update：'更改代码'
-  
+  ```
 ## Vue SPA项目规范
 
-1.项目创建(采用 vue-cli3)
-  vue create project-name
+1.项目创建(采用 vue-cli3)  
+  vue create project-name  
   配置项选择: Babel, Router, Vuex, CSS-Pre-processors, Linter, Unit Testing
 
 2.目录结构创建,见项目
