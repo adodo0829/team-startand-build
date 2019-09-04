@@ -83,6 +83,7 @@
     </div>
     ```
   - 布局属性声明顺序
+    ```
     1.Positioning     定位
     2.Box model       盒模型
     3.Typographic     字体
@@ -124,18 +125,19 @@
         /* Other */
         cursor: pointer; 
       }
-
+     ```
 ### JavaScript书写规范
   - 变量及函数声明: 统一采用 let,const,class,function
   
   - 命名符合语义化
+    ```
     can	判断是否可执行某个动作
     has	判断是否含有某个值
     is	判断是否为某个值
     get	获取某个值
     set	设置某个值
     示例:
-    ```
+    
       //是否可阅读 
       function canRead(){ 
         return true; 
@@ -177,14 +179,16 @@
   
   - 文件注释 用于告诉不熟悉这段代码的读者这个文件中包含哪些东西, 提供文件的大体内容, 它的作者, 依赖关系和兼容性信息
   示例: 如 filter.js 文件
+    ```
     /**
     * @description {项目中的业务工具函数, 处理字符过滤,格式转化}
     * @author {huhua}
     * @date {2019-08-30}
     */ 
-
+    ```
   - 函数,方法,类注释包含参数说明，返回值以及作用和用法
     示例:
+    ```
     /**
     * @description 两数之和
     * @param {number} x 参数的说明
@@ -194,7 +198,7 @@
     function sumOfTwoNumber(x,y) {
       return x + y
     }
-
+    ```
   - 推荐使用函数式编程方式
     ```
     const programmerOutput = [
@@ -220,17 +224,20 @@
 ### vue 组件书写规范(保证必要的业务逻辑注释)
 
   - vue组件模板标签顺序
-    ```<template>
+    ```
+      <template>
          模块之间记得添加注释区分
       </template>
     ```
 
-    ```<script>
+    ```
+       <script>
          methods中的业务逻辑记得添加注释
        </script>
     ```
 
-    ```<style>
+    ```
+      <style>
          根据 template 模块添加注释区分; 
          交互样式注意添加注释(在模板中动态导入的)
       </style>
@@ -240,20 +247,20 @@
     顺序: 类名 > ref > v-model > 属性传值 > 方法
     示例:
     ```
-    <photo-upload
-      class="photo-upload"
-	ref="upload"
-	v-model="files"
-	:max="4"
-	:auto="false"
-	:action="action"
-	:simultaneous-uploads="1"
-	@files-added="handleAdded"
-	@file-success="handleSuccess"
-	@file-click="handleClick"
-	@file-error="handleError"
-     >
-    </photo-upload>
+      <photo-upload
+        class="photo-upload"
+	  ref="upload"
+	  v-model="files"
+	  :max="4"
+	  :auto="false"
+	  :action="action"
+	  :simultaneous-uploads="1"
+	  @files-added="handleAdded"
+	  @file-success="handleSuccess"
+	  @file-click="handleClick"
+	  @file-error="handleError"
+      >
+      </photo-upload>
     ```
   - script 标签内部声明顺序; 声明规范; props 完整性
     示例:
@@ -313,7 +320,7 @@
   
 ## Vue SPA项目规范
 
-1.项目创建
+1.项目创建(采用 vue-cli3)
   vue create project-name
   配置项选择: Babel, Router, Vuex, CSS-Pre-processors, Linter, Unit Testing
 
