@@ -329,5 +329,6 @@
   vue create project-name  
   配置项选择: Babel, Router, Vuex, CSS-Pre-processors, Linter, Unit Testing
 
-2.目录结构创建,见项目
+2.目录结构创建,见项目  
+
 ![image](https://github.com/appleguardu/team-startand-build/blob/master/src/assets/images/startand.png)
