@@ -1,0 +1,11 @@
+/*
+ *scss 混入配置
+ */
+
+// 设置背景图
+@mixin bgImage($url) {
+  background-image: url($url);
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}

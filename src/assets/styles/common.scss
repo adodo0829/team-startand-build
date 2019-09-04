@@ -1,0 +1,32 @@
+@font-face {
+	font-family: "DIGIB";
+	src: url(../fonts/DS-DIGIB.TTF);
+}
+
+html,
+body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	background-color: rgba(0, 0, 0, 0.8);
+	overflow: hidden;
+}
+
+body {
+	position: relative;
+	font-family: "Avenir", Helvetica, Arial, sans-serif, "PingFang SC",
+		"Microsoft YaHei";
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	input,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	p {
+		padding: 0;
+		margin: 0;
+	}
+}

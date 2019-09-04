@@ -1,0 +1,48 @@
+/*
+* 公共类名配置
+*/
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.position-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+.position-space {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.highlight {
+  font-weight: bold;
+  color: $yellow;
+  font-size: larger;
+  font-family: 'DIGIB';
+  letter-spacing: 5px!important;
+}
+
+.tal {
+  text-align: left;
+}
+.tac {
+  text-align: center;
+}
+.tar {
+  text-align: right;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.oh {
+  overflow: hidden;
+}
