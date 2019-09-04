@@ -26,10 +26,10 @@
   使用: <news-list-item></news-list-item>
 
 ## 代码规范
-  - eslint工具: 对 javascript 代码进行检查, vue 项目中添加相关配置
+  - eslint工具: 对 javascript 代码进行检查, vue项目中添加相关配置
     配置项参考: https://cn.eslint.org/docs/rules/
     
-  - stylelint 工具: 对 css.scss,less 等进行规范检查, vue 项目中配置
+  - stylelint 工具: 对 css.scss,less 等进行规范检查, vue项目中配置
     配置项参考: https://www.npmjs.com/package/stylelint-config-standard
 
 ### HTML书写规范
@@ -181,6 +181,7 @@
     }
 
   - 推荐使用函数式编程方式
+  ```
     const programmerOutput = [
       {
         name: 'Uncle Bobby',
@@ -199,22 +200,25 @@
     const totalOutput = programmerOutput
       .map(output => output.linesOfCode)
       .reduce((totalLines, lines) => totalLines + lines, 0)
-
+   ```
 ### vue 组件书写规范(保证必要的业务逻辑注释)
 
   - vue组件模板标签顺序
     ```<template>
       模块之间记得添加注释区分
-    </template>```
+    </template>
+    ```
 
     ```<script>
       methods中的业务逻辑记得添加注释
-    </script>```
+    </script>
+    ```
 
     ```<style>
       根据 template 模块添加注释区分; 
       交互样式注意添加注释(在模板中动态导入的)
-    </style>```
+      </style>
+    ```
 
   - 组件属性换行,属性的书写顺序
     顺序: 类名 > ref > v-model > 属性传值 > 方法
@@ -222,21 +226,22 @@
     ```
     <photo-upload
       class="photo-upload"
-			ref="upload"
-			v-model="files"
-			:max="4"
-			:auto="false"
-			:action="action"
-			:simultaneous-uploads="1"
-			@files-added="handleAdded"
-			@file-success="handleSuccess"
-			@file-click="handleClick"
-			@file-error="handleError"
-		>
+	ref="upload"
+	v-model="files"
+	:max="4"
+	:auto="false"
+	:action="action"
+	:simultaneous-uploads="1"
+	@files-added="handleAdded"
+	@file-success="handleSuccess"
+	@file-click="handleClick"
+	@file-error="handleError"
+     >
     </photo-upload>
     ```
   - script 标签内部声明顺序; 声明规范; props 完整性
     示例:
+    ```
       import NewsListItem from "@/components-base/news-list-item";
       import { scrollMixin } from "@/mixins/scrollMixin";
       const COMPONET_NAME = 'news-list';
@@ -259,11 +264,15 @@
         watch: {},
         组件路由钩子函数
       }
-  
+   ```
+   
   - style 标签内尽量使用 scoped属性
-    ```<style lang="scss" scoped></style>```
+    ```
+    	<style lang="scss" scoped></style>
+    ```
 
   - props配置: 每个配置项必须有注释说明
+  ```
       props: {
           // 用户名字
           name: { 
@@ -272,7 +281,8 @@
             required: false
           }
       },
-
+  ``` 
+  
 ## git 使用规范
   - master:正式环境分支;  dev: 测试环境分支; 自建个人分支: 自己的名字_dev;
   - 多人合作: 注意提交之前先拉取其他人更新的代码再合并提交!
@@ -290,6 +300,6 @@
   vue create project-name
   配置项选择: Babel, Router, Vuex, CSS-Pre-processors, Linter, Unit Testing
 
-2.目录结构创建
-  见项目
-![](https://github.com/appleguardu/team-startand-build/blob/master/src/assets/images/startand.png)
+2.目录结构创建,见项目
+  
+ ![](https://github.com/appleguardu/team-startand-build/blob/master/src/assets/images/startand.png)
