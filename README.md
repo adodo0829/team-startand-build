@@ -135,6 +135,7 @@
     get	获取某个值
     set	设置某个值
     示例:
+    ```
       //是否可阅读 
       function canRead(){ 
         return true; 
@@ -143,15 +144,16 @@
       function getName{
         return this.name 
       } 
-
+    ```
+   
   - 变量命名: 使用有含义的变量名,统一采用驼峰命名,常量使用全大写+下划线
-  ```
+    ```
     let homeTitle = '主页'
     const SECONDS_IN_ONE_DAY = 24 * 60 * 60
-  ```
+    ```
   
   - 对象简写,推荐字面量写法
-  ```
+    ```
     const name = 'leo'
     const age = 26
     function work() {...}
@@ -161,17 +163,17 @@
       age,
       work
     }
-  ```
+    ```
   
   - 在需要使用对象的多个属性时，使用解构赋值
-  ```
+    ```
     const obj = {
       foo: 'foo',
       bar: 'bar',
       baz: 'baz'
     }
     const { foo, bar, baz } = obj
-  ```
+    ```
   
   - 文件注释 用于告诉不熟悉这段代码的读者这个文件中包含哪些东西, 提供文件的大体内容, 它的作者, 依赖关系和兼容性信息
   示例: 如 filter.js 文件
@@ -194,7 +196,7 @@
     }
 
   - 推荐使用函数式编程方式
-  ```
+    ```
     const programmerOutput = [
       {
         name: 'Uncle Bobby',
@@ -213,23 +215,24 @@
     const totalOutput = programmerOutput
       .map(output => output.linesOfCode)
       .reduce((totalLines, lines) => totalLines + lines, 0)
-   ```
+    ```
+   
 ### vue 组件书写规范(保证必要的业务逻辑注释)
 
   - vue组件模板标签顺序
     ```<template>
-      模块之间记得添加注释区分
-    </template>
+         模块之间记得添加注释区分
+      </template>
     ```
 
     ```<script>
-      methods中的业务逻辑记得添加注释
-    </script>
+         methods中的业务逻辑记得添加注释
+       </script>
     ```
 
     ```<style>
-      根据 template 模块添加注释区分; 
-      交互样式注意添加注释(在模板中动态导入的)
+         根据 template 模块添加注释区分; 
+         交互样式注意添加注释(在模板中动态导入的)
       </style>
     ```
 
@@ -277,15 +280,15 @@
         watch: {},
         组件路由钩子函数
       }
-   ```
+     ```
    
-  - style 标签内尽量使用 scoped属性
-    ```
+   - style 标签内尽量使用 scoped属性
+     ```
     	<style lang="scss" scoped></style>
-    ```
+      ```
 
   - props配置: 每个配置项必须有注释说明
-  ```
+     ```
       props: {
           // 用户名字
           name: { 
@@ -294,9 +297,10 @@
             required: false
           }
       },
-  ``` 
+     ``` 
   
 ## git 使用规范
+  
   - master:正式环境分支;  dev: 测试环境分支; 自建个人分支: 自己的名字_dev;
   - 多人合作: 注意提交之前先拉取其他人更新的代码再合并提交!
   - commit message规范(可以强制做提交预检)
@@ -306,7 +310,7 @@
     refactor：'重构（即不是新增功能，也不是修改bug的代码变动,  推翻重写'
     test：'增加测试'
     update：'更改代码'
-
+  
 ## Vue SPA项目规范
 
 1.项目创建
