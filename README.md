@@ -46,8 +46,9 @@
   - 3.先整体,后局部
   - 4.一些内容不变或者图标类可以考虑使用伪元素
   - 5.一个 html 模块添加注释备注
-  // 示例
+  
   ```
+    // 示例如下:
     <body>
       <!-- 头部栏模块-->
       <header>
@@ -76,8 +77,8 @@
   ```
 ### css 书写规范
   - 类名统一采用连接符形式,带层级关系使用连接符进行连接
-    // 示例
     ```
+    // 示例如下:
     <div class="home">
       <img class="home-logo" src="home_logo.png" alt="主页logo">
     </div>
@@ -136,8 +137,8 @@
     is	判断是否为某个值
     get	获取某个值
     set	设置某个值
-    示例:
     
+    示例:
       //是否可阅读 
       function canRead(){ 
         return true; 
@@ -178,8 +179,9 @@
     ```
   
   - 文件注释 用于告诉不熟悉这段代码的读者这个文件中包含哪些东西, 提供文件的大体内容, 它的作者, 依赖关系和兼容性信息
-  示例: 如 filter.js 文件
+  
     ```
+    示例: 如 filter.js 文件
     /**
     * @description {项目中的业务工具函数, 处理字符过滤,格式转化}
     * @author {huhua}
@@ -187,8 +189,9 @@
     */ 
     ```
   - 函数,方法,类注释包含参数说明，返回值以及作用和用法
-    示例:
+    
     ```
+    示例:
     /**
     * @description 两数之和
     * @param {number} x 参数的说明
@@ -245,8 +248,9 @@
 
   - 组件属性换行,属性的书写顺序
     顺序: 类名 > ref > v-model > 属性传值 > 方法
-    示例:
+   
     ```
+     示例:
       <photo-upload
         class="photo-upload"
 	  ref="upload"
@@ -263,8 +267,9 @@
       </photo-upload>
     ```
   - script 标签内部声明顺序; 声明规范; props 完整性
-    示例:
+    
     ```
+    示例:
       import NewsListItem from "@/components-base/news-list-item";
       import { scrollMixin } from "@/mixins/scrollMixin";
       const COMPONET_NAME = 'news-list';
@@ -318,7 +323,9 @@
     online: 线上发布分支;  
     dev: 测试环境分支; 
     huhua_dev: 本地个人开发分支: 自己的名字_dev;
+    
   - 多人合作: 注意提交之前先拉取其他人更新的代码再合并提交!
+  
   - commit message规范(可以强制做提交预检)
     add：'添加新功能'
     fix：'修补bug'
