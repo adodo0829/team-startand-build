@@ -1,19 +1,67 @@
-// 请求封装
+/**
+ * @description 封装请求模块
+ * @author huhua
+ * @date 2019-09-22
+ */
+
 import axios from 'axios'
-// import Vue from 'vue'
-import baseUrl from './setBaseUrl'
+import baseUrl from './config'
+import router from '../router/router'
+import { Message, Loading } from 'element-ui'
+
+let loading
+
+function startLoading () {
+  loading = Loading.service({
+    lock: true,
+    text: '数据加载中...',
+    background: 'rgba(0, 0, 0, 0.5)'
+  })
+}
+
+function endLoading () {
+  loading.close()
+}
+
+// showFullScreenLoading() tryHideFullScreenLoading() 将同一时刻的请求合并。
+let needLoadingRequestCount = 0
+
+export function showFullScreenLoading () {
+  if (needLoadingRequestCount === 0) {
+    startLoading()
+  }
+  needLoadingRequestCount++
+}
+
+export function tryHideFullScreenLoading () {
+  if (needLoadingRequestCount <= 0) return
+  needLoadingRequestCount--
+  if (needLoadingRequestCount === 0) {
+    endLoading()
+  }
+}
+
+// 10007: AccessToken过期, 请重新登录
+const NEED_LOGIN_CODE_SET = new Set([10007, 100011])
+const token = window.localStorage.getItem('token') || ''
 
 // 创建 axios 实例
-const Axios = axios.create({
+const AxiosInstance = axios.create({
   // 添加初始化配置
   baseURL: baseUrl, // 基地址
   timeout: 15000 // 超时
 })
-Axios.defaults.headers.post['Content-Type'] =
+AxiosInstance.defaults.headers.post['Content-Type'] =
   'application/x-www-form-urlencoded'
+// AxiosInstance.defaults.headers.post['Content-Type'] = 'application/json'
+
 // 请求拦截器
-Axios.interceptors.request.use(
+AxiosInstance.interceptors.request.use(
   config => {
+    !~config.url.indexOf('admin/login') &&
+      token &&
+      (config.headers['X-ACCESS-TOKEN'] = token)
+    showFullScreenLoading()
     return config
   },
   error => {
@@ -29,22 +77,44 @@ Axios.interceptors.request.use(
  */
 
 // 响应拦截器
-Axios.interceptors.response.use(
+AxiosInstance.interceptors.response.use(
   response => {
+    // console.log(response)
     const res = response.data
-    // console.log('sucess', res.data);
-    if (res.status && res.status.code === 0) {
-      // store.dispatch('hideWaiting')
-      return res.data // 成功
+    let code = res.status.code
+    let message = res.status.message
+    if (+code === 0) {
+      tryHideFullScreenLoading()
+      // TODO:接口格式未统一处理
+      return res.data || res
+    } else {
+      if (NEED_LOGIN_CODE_SET.has(+code)) {
+        window.localStorage.removeItem('token')
+        router.replace({
+          path: '/login',
+          query: { redirect: router.currentRoute.fullPath }
+        })
+      } else {
+        Message({
+          type: 'error',
+          message: message,
+          center: true
+        })
+      }
+      tryHideFullScreenLoading()
+      return Promise.reject(message)
     }
   },
   error => {
     console.log('response error:', error) // for debug
     if (error) {
-      // router.replace({
-      //   path: '/netError',
-      //   query: { redirect: router.currentRoute.fullPath }
-      // })
+      Message({
+        type: 'error',
+        message: error,
+        duration: 5000,
+        center: true
+      })
+      tryHideFullScreenLoading()
     }
     return Promise.reject(error)
   }
@@ -54,9 +124,8 @@ Axios.interceptors.response.use(
 // 通过 this.$http.post 或者 get 去请求
 export const http = {
   install (Vue) {
-    Vue.prototype.$http = Axios
+    Vue.prototype.$http = AxiosInstance
   }
 }
 
-// 导出 Axios实例
-export default Axios
+export default AxiosInstance
