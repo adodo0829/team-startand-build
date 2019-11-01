@@ -1,20 +1,17 @@
-let buildEnv = process.env.VUE_APP_BUILD
+/**
+ * @description 环境变量: 接口基地址配置
+ * @author huhua
+ * @date 2019-09-22
+ */
 
-let baseUrl = ''
+let buildEnv = process.env.VUE_APP_ENV
 
-switch (buildEnv) {
-  case 'development':
-    baseUrl = '开发接口地址'
-    break
-  case 'test':
-    baseUrl = '测试接口地址'
-    break
-  case 'production':
-    baseUrl = '正式接口地址'
-    break
-  default:
-    baseUrl = '测试接口地址'
-    break
-}
+const K_V = [
+  ['development', 'http://192.168.9.xxx:8082'],
+  ['test', 'http://192.168.9.xxx:8082'],
+  ['production', 'address3']
+]
 
-export default baseUrl
+const URL_MAP = new Map(K_V)
+
+export default URL_MAP.get(buildEnv)
