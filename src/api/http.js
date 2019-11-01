@@ -7,15 +7,15 @@
 import axios from 'axios'
 import baseUrl from './config'
 import router from '../router/router'
-import { Message, Loading } from 'element-ui'
+import { Message, Loading, Notification } from 'element-ui'
 
 let loading
 
 function startLoading () {
   loading = Loading.service({
     lock: true,
-    text: '数据加载中...',
-    background: 'rgba(0, 0, 0, 0.5)'
+    text: '正在加载...',
+    background: 'rgba(0, 0, 0, 0.3)'
   })
 }
 
@@ -49,7 +49,7 @@ const token = window.localStorage.getItem('token') || ''
 const AxiosInstance = axios.create({
   // 添加初始化配置
   baseURL: baseUrl, // 基地址
-  timeout: 15000 // 超时
+  timeout: 10000 // 超时
 })
 AxiosInstance.defaults.headers.post['Content-Type'] =
   'application/x-www-form-urlencoded'
@@ -79,30 +79,61 @@ AxiosInstance.interceptors.request.use(
 // 响应拦截器
 AxiosInstance.interceptors.response.use(
   response => {
+    // console.log(response.config.method)
     // console.log(response)
-    const res = response.data
-    let code = res.status.code
-    let message = res.status.message
-    if (+code === 0) {
-      tryHideFullScreenLoading()
-      // TODO:接口格式未统一处理
-      return res.data || res
-    } else {
-      if (NEED_LOGIN_CODE_SET.has(+code)) {
-        window.localStorage.removeItem('token')
-        router.replace({
-          path: '/login',
-          query: { redirect: router.currentRoute.fullPath }
-        })
+    try {
+      const res = response.data
+      let code = res.status.code
+      let message = res.status.message
+      if (+code === 0) {
+        tryHideFullScreenLoading()
+        // TODO: POST统一提示
+        if (
+          response.config.method === 'post' ||
+          response.config.method === 'delete'
+        ) {
+          Notification({
+            type: 'success',
+            message: '操作成功',
+            position: 'bottom-right'
+          })
+        }
+        // TODO:接口格式未统一处理
+        return res.data || res
       } else {
-        Message({
-          type: 'error',
-          message: message,
-          center: true
-        })
+        if (NEED_LOGIN_CODE_SET.has(+code)) {
+          window.localStorage.removeItem('token')
+          router.replace({
+            path: '/login',
+            query: { redirect: router.currentRoute.fullPath }
+          })
+        } else {
+          if (response.config.method === 'post') {
+            Notification({
+              type: 'error',
+              message: '操作失败',
+              position: 'bottom-right'
+            })
+          }
+          Message({
+            type: 'error',
+            message: message,
+            duration: 5000,
+            center: true
+          })
+        }
+        tryHideFullScreenLoading()
+        return Promise.reject(message)
       }
+    } catch (error) {
       tryHideFullScreenLoading()
-      return Promise.reject(message)
+      Message({
+        type: 'error',
+        message: error,
+        duration: 5000,
+        center: true
+      })
+      throw new Error(error)
     }
   },
   error => {
